@@ -1,0 +1,1232 @@
+// Generated from Skills-For-Real-Engineers-Reference.md. Do not edit by hand.
+// Run `npm run data` after editing the Markdown.
+
+export type Field = { label: string; value: string; items?: string[] };
+export type Skill = {
+  name: string; bucket: string; invocation: string;
+  mode: string; path: string; purpose: string; plugin: boolean;
+  fields: Field[]; source: string;
+};
+
+export const skills: Skill[] = [
+ {
+  "name": "ask-matt",
+  "bucket": "engineering",
+  "invocation": "/ask-matt",
+  "mode": "user",
+  "path": "skills/engineering/ask-matt/SKILL.md",
+  "purpose": "Answer the question of which skill or flow fits the situation in front of you.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "You do not remember what is available, or you are unsure whether a piece of work belongs in the main flow or an on-ramp."
+   },
+   {
+    "label": "How it works",
+    "value": "Acts as a router over the user-invoked skills. Describes the main flow from idea to shipped, the three on-ramps, the standalone skills, and the vocabulary layers that run underneath."
+   },
+   {
+    "label": "Bundled files",
+    "value": "`PHASE-BOUNDARIES.md`, which explains where compaction belongs."
+   },
+   {
+    "label": "Pairs with",
+    "value": "Everything. It is the index."
+   }
+  ],
+  "plugin": true,
+  "source": "#### ask-matt\n\n- **Invocation:** `/ask-matt`\n- **Mode:** User-invoked\n- **Path:** `skills/engineering/ask-matt/SKILL.md`\n- **Purpose:** Answer the question of which skill or flow fits the situation in front\n  of you.\n- **Use when:** You do not remember what is available, or you are unsure whether a\n  piece of work belongs in the main flow or an on-ramp.\n- **How it works:** Acts as a router over the user-invoked skills. Describes the main\n  flow from idea to shipped, the three on-ramps, the standalone skills, and the\n  vocabulary layers that run underneath.\n- **Bundled files:** `PHASE-BOUNDARIES.md`, which explains where compaction belongs.\n- **Pairs with:** Everything. It is the index."
+ },
+ {
+  "name": "grill-with-docs",
+  "bucket": "engineering",
+  "invocation": "/grill-with-docs",
+  "mode": "user",
+  "path": "skills/engineering/grill-with-docs/SKILL.md",
+  "purpose": "Run a relentless interview that also builds the project's domain model as it goes.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Starting any change inside a working directory. This is the default entry point to the main flow."
+   },
+   {
+    "label": "How it works",
+    "value": "Composes two skills. It runs the `/grilling` interview and layers `/domain-modeling` on top, so terminology gets sharpened and `CONTEXT.md` and ADRs get updated inline as decisions crystallise."
+   },
+   {
+    "label": "Outputs",
+    "value": "A shared understanding, plus updates to `CONTEXT.md` and any ADRs warranted by the conversation."
+   },
+   {
+    "label": "Pairs with",
+    "value": "`/to-spec` and `/to-tickets` downstream. Use `/grill-me` instead when no repository is present to leave a trail in."
+   }
+  ],
+  "plugin": true,
+  "source": "#### grill-with-docs\n\n- **Invocation:** `/grill-with-docs`\n- **Mode:** User-invoked\n- **Path:** `skills/engineering/grill-with-docs/SKILL.md`\n- **Purpose:** Run a relentless interview that also builds the project's domain model\n  as it goes.\n- **Use when:** Starting any change inside a working directory. This is the default\n  entry point to the main flow.\n- **How it works:** Composes two skills. It runs the `/grilling` interview and layers\n  `/domain-modeling` on top, so terminology gets sharpened and `CONTEXT.md` and ADRs\n  get updated inline as decisions crystallise.\n- **Outputs:** A shared understanding, plus updates to `CONTEXT.md` and any ADRs\n  warranted by the conversation.\n- **Pairs with:** `/to-spec` and `/to-tickets` downstream. Use `/grill-me` instead\n  when no repository is present to leave a trail in."
+ },
+ {
+  "name": "triage",
+  "bucket": "engineering",
+  "invocation": "/triage",
+  "mode": "user",
+  "path": "skills/engineering/triage/SKILL.md",
+  "purpose": "Move incoming issues and external pull requests through a small state machine.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Bug reports and feature requests you did not write are piling up."
+   },
+   {
+    "label": "How it works",
+    "value": "Every issue carries exactly one category role and one state role. Categories are `bug` and `enhancement`. States are `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, and `wontfix`. An unlabelled issue enters at `needs-triage`. From there it moves onward, and `needs-info` returns to `needs-triage` once the reporter replies. Conflicting state roles get flagged to the maintainer before anything else happens. A pull request is treated as an issue with attached code, so the same machine applies."
+   },
+   {
+    "label": "Disclosure rule",
+    "value": "Every comment or issue posted during triage begins with a visible note that it was generated by AI during triage."
+   },
+   {
+    "label": "Bundled files",
+    "value": "`AGENT-BRIEF.md` on writing durable briefs, `OUT-OF-SCOPE.md` on the rejection knowledge base."
+   },
+   {
+    "label": "Pairs with",
+    "value": "`/implement`, which picks up anything marked `ready-for-agent`."
+   },
+   {
+    "label": "Do not",
+    "value": "Triage tickets produced by `/to-tickets`. They are already agent-ready."
+   }
+  ],
+  "plugin": true,
+  "source": "#### triage\n\n- **Invocation:** `/triage`\n- **Mode:** User-invoked\n- **Path:** `skills/engineering/triage/SKILL.md`\n- **Purpose:** Move incoming issues and external pull requests through a small state\n  machine.\n- **Use when:** Bug reports and feature requests you did not write are piling up.\n- **How it works:** Every issue carries exactly one category role and one state role.\n  Categories are `bug` and `enhancement`. States are `needs-triage`, `needs-info`,\n  `ready-for-agent`, `ready-for-human`, and `wontfix`. An unlabelled issue enters at\n  `needs-triage`. From there it moves onward, and `needs-info` returns to\n  `needs-triage` once the reporter replies. Conflicting state roles get flagged to\n  the maintainer before anything else happens. A pull request is treated as an issue\n  with attached code, so the same machine applies.\n- **Disclosure rule:** Every comment or issue posted during triage begins with a\n  visible note that it was generated by AI during triage.\n- **Bundled files:** `AGENT-BRIEF.md` on writing durable briefs, `OUT-OF-SCOPE.md` on\n  the rejection knowledge base.\n- **Pairs with:** `/implement`, which picks up anything marked `ready-for-agent`.\n- **Do not:** Triage tickets produced by `/to-tickets`. They are already agent-ready."
+ },
+ {
+  "name": "improve-codebase-architecture",
+  "bucket": "engineering",
+  "invocation": "/improve-codebase-architecture",
+  "mode": "user",
+  "path": "skills/engineering/improve-codebase-architecture/SKILL.md",
+  "purpose": "Survey a codebase for deepening opportunities and present them as a visual report.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Every few days, and whenever debugging reveals there is no good seam to lock a bug down."
+   },
+   {
+    "label": "How it works",
+    "value": "Three phases. First it scopes, using your stated direction or, failing that, the commit history to find the parts of the codebase that keep changing. It reads `CONTEXT.md` and nearby ADRs, then sends a sub-agent to walk the code looking for friction: concepts that require bouncing between many small modules, shallow modules, pure functions extracted only for testability while the real bugs live in how they are called, coupling that leaks across seams, and code that is hard to test through its current interface. It applies the deletion test to anything suspected of being shallow. Second, it writes a self-contained HTML report to the operating system temporary directory, never into the repository, and opens it. Third, once you pick a candidate, it runs `/grilling` over that one choice."
+   },
+   {
+    "label": "Report contents per candidate",
+    "value": "files involved, the problem, the solution in plain language, benefits framed as locality and leverage, a before and after diagram, and a recommendation strength of Strong, Worth exploring, or Speculative. The report closes with a top recommendation."
+   },
+   {
+    "label": "Honest limitation",
+    "value": "It is a survey, not a rescue. On a genuinely old codebase it will find real candidates, but it will not untangle the mud for you."
+   },
+   {
+    "label": "Bundled files",
+    "value": "`HTML-REPORT.md`, the report scaffold and diagram patterns."
+   },
+   {
+    "label": "Pairs with",
+    "value": "`/codebase-design` for vocabulary, `/domain-modeling` for naming."
+   }
+  ],
+  "plugin": true,
+  "source": "#### improve-codebase-architecture\n\n- **Invocation:** `/improve-codebase-architecture`\n- **Mode:** User-invoked\n- **Path:** `skills/engineering/improve-codebase-architecture/SKILL.md`\n- **Purpose:** Survey a codebase for deepening opportunities and present them as a\n  visual report.\n- **Use when:** Every few days, and whenever debugging reveals there is no good seam\n  to lock a bug down.\n- **How it works:** Three phases. First it scopes, using your stated direction or,\n  failing that, the commit history to find the parts of the codebase that keep\n  changing. It reads `CONTEXT.md` and nearby ADRs, then sends a sub-agent to walk the\n  code looking for friction: concepts that require bouncing between many small\n  modules, shallow modules, pure functions extracted only for testability while the\n  real bugs live in how they are called, coupling that leaks across seams, and code\n  that is hard to test through its current interface. It applies the deletion test to\n  anything suspected of being shallow. Second, it writes a self-contained HTML report\n  to the operating system temporary directory, never into the repository, and opens\n  it. Third, once you pick a candidate, it runs `/grilling` over that one choice.\n- **Report contents per candidate:** files involved, the problem, the solution in\n  plain language, benefits framed as locality and leverage, a before and after\n  diagram, and a recommendation strength of Strong, Worth exploring, or Speculative.\n  The report closes with a top recommendation.\n- **Honest limitation:** It is a survey, not a rescue. On a genuinely old codebase it\n  will find real candidates, but it will not untangle the mud for you.\n- **Bundled files:** `HTML-REPORT.md`, the report scaffold and diagram patterns.\n- **Pairs with:** `/codebase-design` for vocabulary, `/domain-modeling` for naming."
+ },
+ {
+  "name": "setup-matt-pocock-skills",
+  "bucket": "engineering",
+  "invocation": "/setup-matt-pocock-skills",
+  "mode": "user",
+  "path": "skills/engineering/setup-matt-pocock-skills/SKILL.md",
+  "purpose": "Write the per-repository configuration the engineering skills assume.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Once per repository, before first use of the other engineering skills."
+   },
+   {
+    "label": "How it works",
+    "value": "Explores first and assumes nothing. It reads the git remotes, `AGENTS.md` and `CLAUDE.md`, `CONTEXT.md` and `CONTEXT-MAP.md`, any `docs/adr/` directories, `docs/agents/`, and `.scratch/`. It checks whether the triage skill is even installed, and looks for monorepo signals. Then it presents findings and takes the sections in order, leading each with a recommended answer so you can accept in one word, and skipping sections that exploration already settled."
+   },
+   {
+    "label": "Sections",
+    "value": "issue tracker, triage label vocabulary, domain document layout."
+   },
+   {
+    "label": "Tracker options",
+    "value": "GitHub via the `gh` CLI, GitLab via the `glab` CLI, or local markdown under `.scratch/`."
+   },
+   {
+    "label": "Bundled files",
+    "value": "`issue-tracker-github.md`, `issue-tracker-gitlab.md`, `issue-tracker-local.md`, `triage-labels.md`, `domain.md`."
+   }
+  ],
+  "plugin": true,
+  "source": "#### setup-matt-pocock-skills\n\n- **Invocation:** `/setup-matt-pocock-skills`\n- **Mode:** User-invoked\n- **Path:** `skills/engineering/setup-matt-pocock-skills/SKILL.md`\n- **Purpose:** Write the per-repository configuration the engineering skills assume.\n- **Use when:** Once per repository, before first use of the other engineering\n  skills.\n- **How it works:** Explores first and assumes nothing. It reads the git remotes,\n  `AGENTS.md` and `CLAUDE.md`, `CONTEXT.md` and `CONTEXT-MAP.md`, any `docs/adr/`\n  directories, `docs/agents/`, and `.scratch/`. It checks whether the triage skill is\n  even installed, and looks for monorepo signals. Then it presents findings and takes\n  the sections in order, leading each with a recommended answer so you can accept in\n  one word, and skipping sections that exploration already settled.\n- **Sections:** issue tracker, triage label vocabulary, domain document layout.\n- **Tracker options:** GitHub via the `gh` CLI, GitLab via the `glab` CLI, or local\n  markdown under `.scratch/`.\n- **Bundled files:** `issue-tracker-github.md`, `issue-tracker-gitlab.md`,\n  `issue-tracker-local.md`, `triage-labels.md`, `domain.md`."
+ },
+ {
+  "name": "to-spec",
+  "bucket": "engineering",
+  "invocation": "/to-spec",
+  "mode": "user",
+  "path": "skills/engineering/to-spec/SKILL.md",
+  "purpose": "Turn the current conversation into a specification and publish it.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "The interview is finished and the work spans more than one session."
+   },
+   {
+    "label": "How it works",
+    "value": "No interview. It synthesises what has already been discussed. First it explores the repository if it has not already, using the domain glossary throughout and respecting nearby ADRs. Then it sketches the seams at which the feature will be tested, preferring existing seams to new ones and proposing new ones at the highest point possible. Fewer seams is better, and one is ideal. It checks the seams with you before writing. Then it writes the specification and publishes it with the `ready-for-agent` label, needing no further triage."
+   },
+   {
+    "label": "Specification template",
+    "value": "Problem statement from the user's perspective, solution from the user's perspective, a long numbered list of user stories in the form of actor, feature, and benefit, implementation decisions covering modules and interfaces touched, and testing decisions."
+   },
+   {
+    "label": "Excluded from the specification",
+    "value": "File paths and code snippets, because they go stale. The one exception is a snippet from a prototype that encodes a decision more precisely than prose, such as a state machine or a schema, trimmed to the decision-rich part."
+   }
+  ],
+  "plugin": true,
+  "source": "#### to-spec\n\n- **Invocation:** `/to-spec`\n- **Mode:** User-invoked\n- **Path:** `skills/engineering/to-spec/SKILL.md`\n- **Purpose:** Turn the current conversation into a specification and publish it.\n- **Use when:** The interview is finished and the work spans more than one session.\n- **How it works:** No interview. It synthesises what has already been discussed.\n  First it explores the repository if it has not already, using the domain glossary\n  throughout and respecting nearby ADRs. Then it sketches the seams at which the\n  feature will be tested, preferring existing seams to new ones and proposing new\n  ones at the highest point possible. Fewer seams is better, and one is ideal. It\n  checks the seams with you before writing. Then it writes the specification and\n  publishes it with the `ready-for-agent` label, needing no further triage.\n- **Specification template:** Problem statement from the user's perspective, solution\n  from the user's perspective, a long numbered list of user stories in the form of\n  actor, feature, and benefit, implementation decisions covering modules and\n  interfaces touched, and testing decisions.\n- **Excluded from the specification:** File paths and code snippets, because they go\n  stale. The one exception is a snippet from a prototype that encodes a decision more\n  precisely than prose, such as a state machine or a schema, trimmed to the\n  decision-rich part."
+ },
+ {
+  "name": "to-tickets",
+  "bucket": "engineering",
+  "invocation": "/to-tickets",
+  "mode": "user",
+  "path": "skills/engineering/to-tickets/SKILL.md",
+  "purpose": "Break a plan, specification, or conversation into tracer-bullet tickets with declared blocking edges.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Immediately after `/to-spec`, in the same context window."
+   },
+   {
+    "label": "How it works",
+    "value": "Five steps. Gather context from the conversation or a passed reference. Explore the codebase if needed, looking for prefactoring that would make the change easy before making the change. Draft vertical slices. Quiz you on the breakdown. Publish to the configured tracker."
+   },
+   {
+    "label": "Slice rules",
+    "value": "Each slice cuts a narrow but complete path through every layer. A completed slice is demonstrable on its own. Each slice fits in one fresh context window. Prefactoring goes first."
+   },
+   {
+    "label": "Wide refactors",
+    "value": "The exception to vertical slicing. Sequence them as expand, then migrate in batches sized by blast radius with each batch blocked by the expand, then contract once no caller remains. Where batches cannot stay green alone, keep the sequence but share an integration branch, with green promised only at a final integrate-and-verify ticket."
+   },
+   {
+    "label": "Publication shape",
+    "value": "On a local tracker, one file per ticket with edges as text. On a real tracker, native blocking links, so any ticket whose blockers are done can be picked up."
+   }
+  ],
+  "plugin": true,
+  "source": "#### to-tickets\n\n- **Invocation:** `/to-tickets`\n- **Mode:** User-invoked\n- **Path:** `skills/engineering/to-tickets/SKILL.md`\n- **Purpose:** Break a plan, specification, or conversation into tracer-bullet tickets\n  with declared blocking edges.\n- **Use when:** Immediately after `/to-spec`, in the same context window.\n- **How it works:** Five steps. Gather context from the conversation or a passed\n  reference. Explore the codebase if needed, looking for prefactoring that would make\n  the change easy before making the change. Draft vertical slices. Quiz you on the\n  breakdown. Publish to the configured tracker.\n- **Slice rules:** Each slice cuts a narrow but complete path through every layer. A\n  completed slice is demonstrable on its own. Each slice fits in one fresh context\n  window. Prefactoring goes first.\n- **Wide refactors:** The exception to vertical slicing. Sequence them as expand,\n  then migrate in batches sized by blast radius with each batch blocked by the\n  expand, then contract once no caller remains. Where batches cannot stay green\n  alone, keep the sequence but share an integration branch, with green promised only\n  at a final integrate-and-verify ticket.\n- **Publication shape:** On a local tracker, one file per ticket with edges as text.\n  On a real tracker, native blocking links, so any ticket whose blockers are done can\n  be picked up."
+ },
+ {
+  "name": "implement",
+  "bucket": "engineering",
+  "invocation": "/implement",
+  "mode": "user",
+  "path": "skills/engineering/implement/SKILL.md",
+  "purpose": "Build the work described by a specification or a set of tickets.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Once the work is specified. Run it per ticket, clearing context between tickets."
+   },
+   {
+    "label": "How it works",
+    "value": "Drives `/tdd` where possible, at pre-agreed seams. Runs typechecking regularly and single test files regularly, then the full suite once at the end. Closes out by running `/code-review`, then commits to the current branch."
+   },
+   {
+    "label": "Pairs with",
+    "value": "`/tdd` inside, `/code-review` after."
+   }
+  ],
+  "plugin": true,
+  "source": "#### implement\n\n- **Invocation:** `/implement`\n- **Mode:** User-invoked\n- **Path:** `skills/engineering/implement/SKILL.md`\n- **Purpose:** Build the work described by a specification or a set of tickets.\n- **Use when:** Once the work is specified. Run it per ticket, clearing context\n  between tickets.\n- **How it works:** Drives `/tdd` where possible, at pre-agreed seams. Runs\n  typechecking regularly and single test files regularly, then the full suite once at\n  the end. Closes out by running `/code-review`, then commits to the current branch.\n- **Pairs with:** `/tdd` inside, `/code-review` after."
+ },
+ {
+  "name": "wayfinder",
+  "bucket": "engineering",
+  "invocation": "/wayfinder",
+  "mode": "user",
+  "path": "skills/engineering/wayfinder/SKILL.md",
+  "purpose": "Chart a route through work too large for one session, as a shared map of decision tickets.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "A greenfield project or a very large feature arrives wrapped in fog, where the way to the destination is not visible yet. Not for well-scoped features."
+   },
+   {
+    "label": "How it works",
+    "value": "Naming the destination is the first act, because it shapes every ticket. The map is a single issue labelled `wayfinder:map`, and its tickets are child issues. The map is an index, not a store: each decision lives in exactly one place, its own ticket, and the map only gists and links. Tickets get worked one at a time until nothing is left to decide."
+   },
+   {
+    "label": "Core constraint",
+    "value": "Produce decisions, not deliverables. The pull to start building is usually the signal that the map has reached its edge and it is time to hand off. An effort can override this in its notes."
+   },
+   {
+    "label": "Readability rule",
+    "value": "Refer to every map and ticket by its title, never by a bare number or slug. Identifiers ride inside the name, never in place of it."
+   },
+   {
+    "label": "Map body",
+    "value": "A destination section, a notes section for domain and standing preferences, and a decisions-so-far index with one line per closed ticket. Open tickets are not listed, because they are found by query."
+   },
+   {
+    "label": "Cost",
+    "value": "The most cognitively demanding flow in the collection. Slower and denser than `/grill-with-docs`."
+   }
+  ],
+  "plugin": true,
+  "source": "#### wayfinder\n\n- **Invocation:** `/wayfinder`\n- **Mode:** User-invoked\n- **Path:** `skills/engineering/wayfinder/SKILL.md`\n- **Purpose:** Chart a route through work too large for one session, as a shared map\n  of decision tickets.\n- **Use when:** A greenfield project or a very large feature arrives wrapped in fog,\n  where the way to the destination is not visible yet. Not for well-scoped features.\n- **How it works:** Naming the destination is the first act, because it shapes every\n  ticket. The map is a single issue labelled `wayfinder:map`, and its tickets are\n  child issues. The map is an index, not a store: each decision lives in exactly one\n  place, its own ticket, and the map only gists and links. Tickets get worked one at\n  a time until nothing is left to decide.\n- **Core constraint:** Produce decisions, not deliverables. The pull to start\n  building is usually the signal that the map has reached its edge and it is time to\n  hand off. An effort can override this in its notes.\n- **Readability rule:** Refer to every map and ticket by its title, never by a bare\n  number or slug. Identifiers ride inside the name, never in place of it.\n- **Map body:** A destination section, a notes section for domain and standing\n  preferences, and a decisions-so-far index with one line per closed ticket. Open\n  tickets are not listed, because they are found by query.\n- **Cost:** The most cognitively demanding flow in the collection. Slower and denser\n  than `/grill-with-docs`."
+ },
+ {
+  "name": "tdd",
+  "bucket": "engineering",
+  "invocation": "/tdd",
+  "mode": "model",
+  "path": "skills/engineering/tdd/SKILL.md",
+  "purpose": "Run a red to green loop that produces tests worth keeping.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Building a feature or fixing a bug test-first. Called by `/implement`, or invoked on its own for a concrete behaviour without a full specification."
+   },
+   {
+    "label": "What a good test is",
+    "value": "It verifies behaviour through public interfaces, not implementation details. It reads like a specification. It survives refactors, because the implementation can change entirely while the test does not."
+   },
+   {
+    "label": "Seams",
+    "value": "A seam is the public boundary you test at. Tests live at seams and never against internals. Write down the seams under test and confirm them before writing any test. No test is written at an unconfirmed seam. You cannot test everything, and agreeing seams up front is how effort lands on critical paths instead of every edge case."
+   },
+   {
+    "label": "Anti-patterns",
+    "value": "",
+    "items": [
+     "*Implementation-coupled.* Mocks internal collaborators, tests private methods, or verifies through a side channel such as querying the database instead of using the interface. The tell is a test that breaks on refactor while behaviour is unchanged.",
+     "*Tautological.* The assertion recomputes the expected value the same way the code does, so it passes by construction and can never disagree with the code. Expected values must come from an independent source: a known-good literal, a worked example, the specification.",
+     "*Horizontal slicing.* Writing all tests first, then all implementation. Bulk tests verify imagined behaviour, go insensitive to real changes, and commit you to a test structure before you understand the implementation."
+    ]
+   },
+   {
+    "label": "Rules of the loop",
+    "value": "Red before green. One seam, one test, one minimal implementation per cycle. Refactoring belongs to the review stage, not the red to green cycle."
+   },
+   {
+    "label": "Bundled files",
+    "value": "`tests.md` for good and bad examples, `mocking.md` for mocking guidance, which limits mocks to system boundaries."
+   },
+   {
+    "label": "Reads",
+    "value": "`CONTEXT.md`, so test names and interface vocabulary match the project's domain language."
+   }
+  ],
+  "plugin": true,
+  "source": "#### tdd\n\n- **Invocation:** `/tdd`\n- **Mode:** Model-invoked\n- **Path:** `skills/engineering/tdd/SKILL.md`\n- **Purpose:** Run a red to green loop that produces tests worth keeping.\n- **Use when:** Building a feature or fixing a bug test-first. Called by `/implement`,\n  or invoked on its own for a concrete behaviour without a full specification.\n- **What a good test is:** It verifies behaviour through public interfaces, not\n  implementation details. It reads like a specification. It survives refactors,\n  because the implementation can change entirely while the test does not.\n- **Seams:** A seam is the public boundary you test at. Tests live at seams and never\n  against internals. Write down the seams under test and confirm them before writing\n  any test. No test is written at an unconfirmed seam. You cannot test everything, and\n  agreeing seams up front is how effort lands on critical paths instead of every edge\n  case.\n- **Anti-patterns:**\n  - *Implementation-coupled.* Mocks internal collaborators, tests private methods, or\n    verifies through a side channel such as querying the database instead of using\n    the interface. The tell is a test that breaks on refactor while behaviour is\n    unchanged.\n  - *Tautological.* The assertion recomputes the expected value the same way the code\n    does, so it passes by construction and can never disagree with the code. Expected\n    values must come from an independent source: a known-good literal, a worked\n    example, the specification.\n  - *Horizontal slicing.* Writing all tests first, then all implementation. Bulk\n    tests verify imagined behaviour, go insensitive to real changes, and commit you to\n    a test structure before you understand the implementation.\n- **Rules of the loop:** Red before green. One seam, one test, one minimal\n  implementation per cycle. Refactoring belongs to the review stage, not the red to\n  green cycle.\n- **Bundled files:** `tests.md` for good and bad examples, `mocking.md` for mocking\n  guidance, which limits mocks to system boundaries.\n- **Reads:** `CONTEXT.md`, so test names and interface vocabulary match the project's\n  domain language."
+ },
+ {
+  "name": "code-review",
+  "bucket": "engineering",
+  "invocation": "/code-review",
+  "mode": "model",
+  "path": "skills/engineering/code-review/SKILL.md",
+  "purpose": "Review the diff since a fixed point along two independent axes.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Before committing, before merging, or whenever you want a branch or pull request reviewed. Called automatically by `/implement`."
+   },
+   {
+    "label": "The two axes",
+    "value": "Standards asks whether the code follows this repository's documented standards. Spec asks whether the code faithfully implements the originating issue or specification."
+   },
+   {
+    "label": "How it works",
+    "value": "Both axes run as parallel sub-agents so neither pollutes the other's context, then the findings get reported side by side. The fixed point is whatever you supply: a commit, a branch, a tag, or a merge base. The skill confirms the reference resolves and the diff is not empty before spawning anything, so a bad reference fails early rather than inside two sub-agents. The comparison uses three dots, so it runs against the merge base."
+   },
+   {
+    "label": "Finding the specification",
+    "value": "Issue references in commit messages first, then a path you passed, then a specification file matching the branch or feature, then asking you. If there is none, the Spec axis reports that and skips."
+   },
+   {
+    "label": "Smell baseline",
+    "value": "On top of whatever the repository documents, the Standards axis carries a fixed set of code smells from Martin Fowler's *Refactoring*. A documented repository standard always overrides the baseline. Every smell is a labelled heuristic, never a hard violation, and anything tooling already enforces is skipped."
+   },
+   {
+    "label": "The baseline smells",
+    "value": "Mysterious Name, Duplicated Code, Feature Envy, Data Clumps, Primitive Obsession, Repeated Switches, Shotgun Surgery, Divergent Change, Speculative Generality, Message Chains, Middle Man, Refused Bequest."
+   }
+  ],
+  "plugin": true,
+  "source": "#### code-review\n\n- **Invocation:** `/code-review`\n- **Mode:** Model-invoked\n- **Path:** `skills/engineering/code-review/SKILL.md`\n- **Purpose:** Review the diff since a fixed point along two independent axes.\n- **Use when:** Before committing, before merging, or whenever you want a branch or\n  pull request reviewed. Called automatically by `/implement`.\n- **The two axes:** Standards asks whether the code follows this repository's\n  documented standards. Spec asks whether the code faithfully implements the\n  originating issue or specification.\n- **How it works:** Both axes run as parallel sub-agents so neither pollutes the\n  other's context, then the findings get reported side by side. The fixed point is\n  whatever you supply: a commit, a branch, a tag, or a merge base. The skill confirms\n  the reference resolves and the diff is not empty before spawning anything, so a bad\n  reference fails early rather than inside two sub-agents. The comparison uses three\n  dots, so it runs against the merge base.\n- **Finding the specification:** Issue references in commit messages first, then a\n  path you passed, then a specification file matching the branch or feature, then\n  asking you. If there is none, the Spec axis reports that and skips.\n- **Smell baseline:** On top of whatever the repository documents, the Standards axis\n  carries a fixed set of code smells from Martin Fowler's *Refactoring*. A documented\n  repository standard always overrides the baseline. Every smell is a labelled\n  heuristic, never a hard violation, and anything tooling already enforces is\n  skipped.\n- **The baseline smells:** Mysterious Name, Duplicated Code, Feature Envy, Data\n  Clumps, Primitive Obsession, Repeated Switches, Shotgun Surgery, Divergent Change,\n  Speculative Generality, Message Chains, Middle Man, Refused Bequest."
+ },
+ {
+  "name": "diagnosing-bugs",
+  "bucket": "engineering",
+  "invocation": "/diagnosing-bugs",
+  "mode": "model",
+  "path": "skills/engineering/diagnosing-bugs/SKILL.md",
+  "purpose": "Work hard bugs and performance regressions through a gated loop.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Something is broken, throwing, failing, or slow, and a first glance did not solve it."
+   },
+   {
+    "label": "Redaction rule",
+    "value": "The skill shows commands, outputs, and captured artifacts, so every secret gets replaced with a redaction marker first. Loops get built against environment variables so credentials stay in the environment. Captured artifacts carry authorisation headers, so only the lines carrying signal get quoted. If the redacted output is not enough to diagnose, the skill says so and asks."
+   },
+   {
+    "label": "Phase 1, the heart of it",
+    "value": "Build a feedback loop that goes red on this specific bug. With one, bisection, hypothesis-testing, and instrumentation all follow. Without one, staring at code will not help."
+   },
+   {
+    "label": "Ways to build a loop, in rough order",
+    "value": "a failing test at whatever seam reaches the bug, a curl or HTTP script against a running server, a CLI invocation diffed against a known-good snapshot, a headless browser script, a replayed captured trace, a throwaway harness exercising the path with one function call, a property or fuzz loop for intermittent wrong output, a bisection harness, a differential loop comparing two versions or configurations, and as a last resort a human-in-the-loop bash script that drives the human so the loop stays structured."
+   },
+   {
+    "label": "Tighten the loop",
+    "value": "Treat it as a product. Make it faster by caching setup and narrowing scope. Make the signal sharper by asserting on the specific symptom rather than the absence of a crash. Make it deterministic by pinning time, seeding randomness, isolating the filesystem, and freezing the network."
+   },
+   {
+    "label": "Non-deterministic bugs",
+    "value": "The goal is not a clean reproduction but a higher reproduction rate. Loop the trigger a hundred times, parallelise, add stress, narrow timing windows, inject sleeps. A bug that flakes half the time is debuggable. One that flakes one time in a hundred is not."
+   },
+   {
+    "label": "When no loop is possible",
+    "value": "Stop and say so. List what was tried. Ask for environment access, a redacted captured artifact, or permission to add temporary instrumentation. Do not hypothesise without a loop."
+   },
+   {
+    "label": "Completion criterion for phase 1",
+    "value": "One named command, already run at least once with its output shown, that goes red on this bug."
+   },
+   {
+    "label": "Bundled files",
+    "value": "`scripts/hitl-loop.template.sh`."
+   },
+   {
+    "label": "Hands off to",
+    "value": "`/improve-codebase-architecture`, when the real finding is that no good seam exists to lock the bug down."
+   }
+  ],
+  "plugin": true,
+  "source": "#### diagnosing-bugs\n\n- **Invocation:** `/diagnosing-bugs`\n- **Mode:** Model-invoked\n- **Path:** `skills/engineering/diagnosing-bugs/SKILL.md`\n- **Purpose:** Work hard bugs and performance regressions through a gated loop.\n- **Use when:** Something is broken, throwing, failing, or slow, and a first glance\n  did not solve it.\n- **Redaction rule:** The skill shows commands, outputs, and captured artifacts, so\n  every secret gets replaced with a redaction marker first. Loops get built against\n  environment variables so credentials stay in the environment. Captured artifacts\n  carry authorisation headers, so only the lines carrying signal get quoted. If the\n  redacted output is not enough to diagnose, the skill says so and asks.\n- **Phase 1, the heart of it:** Build a feedback loop that goes red on this specific\n  bug. With one, bisection, hypothesis-testing, and instrumentation all follow.\n  Without one, staring at code will not help.\n- **Ways to build a loop, in rough order:** a failing test at whatever seam reaches\n  the bug, a curl or HTTP script against a running server, a CLI invocation diffed\n  against a known-good snapshot, a headless browser script, a replayed captured\n  trace, a throwaway harness exercising the path with one function call, a property\n  or fuzz loop for intermittent wrong output, a bisection harness, a differential\n  loop comparing two versions or configurations, and as a last resort a\n  human-in-the-loop bash script that drives the human so the loop stays structured.\n- **Tighten the loop:** Treat it as a product. Make it faster by caching setup and\n  narrowing scope. Make the signal sharper by asserting on the specific symptom\n  rather than the absence of a crash. Make it deterministic by pinning time, seeding\n  randomness, isolating the filesystem, and freezing the network.\n- **Non-deterministic bugs:** The goal is not a clean reproduction but a higher\n  reproduction rate. Loop the trigger a hundred times, parallelise, add stress,\n  narrow timing windows, inject sleeps. A bug that flakes half the time is\n  debuggable. One that flakes one time in a hundred is not.\n- **When no loop is possible:** Stop and say so. List what was tried. Ask for\n  environment access, a redacted captured artifact, or permission to add temporary\n  instrumentation. Do not hypothesise without a loop.\n- **Completion criterion for phase 1:** One named command, already run at least once\n  with its output shown, that goes red on this bug.\n- **Bundled files:** `scripts/hitl-loop.template.sh`.\n- **Hands off to:** `/improve-codebase-architecture`, when the real finding is that\n  no good seam exists to lock the bug down."
+ },
+ {
+  "name": "codebase-design",
+  "bucket": "engineering",
+  "invocation": "/codebase-design",
+  "mode": "model",
+  "path": "skills/engineering/codebase-design/SKILL.md",
+  "purpose": "Supply the shared vocabulary and principles for designing deep modules.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Designing or improving an interface, deciding where a seam belongs, making code more testable or more navigable for an agent, or whenever another skill needs the vocabulary."
+   },
+   {
+    "label": "Contents",
+    "value": "The glossary in Section 4.3 of this document, the deep versus shallow comparison, the design tests in Section 4.4, and guidance on designing for testability."
+   },
+   {
+    "label": "Designing for testability",
+    "value": "Accept dependencies rather than creating them. Return results rather than producing side effects. Keep the surface small, because fewer methods means fewer tests and fewer parameters means simpler setup."
+   },
+   {
+    "label": "Relationships",
+    "value": "A module has exactly one interface. Depth is a property of a module measured against its interface. A seam is where the interface lives. An adapter sits at a seam and satisfies the interface. Depth produces leverage for callers and locality for maintainers."
+   },
+   {
+    "label": "Rejected framings",
+    "value": "Depth as a ratio of implementation lines to interface lines, because it rewards padding the implementation. Interface as only a language keyword or a class's public methods, because that is too narrow. Boundary as a synonym for seam, because it collides with domain-driven design."
+   },
+   {
+    "label": "Bundled files",
+    "value": "`DEEPENING.md` on deepening a cluster given its dependencies, and `DESIGN-IT-TWICE.md` on spinning up parallel sub-agents to design an interface several radically different ways before comparing them."
+   }
+  ],
+  "plugin": true,
+  "source": "#### codebase-design\n\n- **Invocation:** `/codebase-design`\n- **Mode:** Model-invoked\n- **Path:** `skills/engineering/codebase-design/SKILL.md`\n- **Purpose:** Supply the shared vocabulary and principles for designing deep\n  modules.\n- **Use when:** Designing or improving an interface, deciding where a seam belongs,\n  making code more testable or more navigable for an agent, or whenever another skill\n  needs the vocabulary.\n- **Contents:** The glossary in Section 4.3 of this document, the deep versus shallow\n  comparison, the design tests in Section 4.4, and guidance on designing for\n  testability.\n- **Designing for testability:** Accept dependencies rather than creating them.\n  Return results rather than producing side effects. Keep the surface small, because\n  fewer methods means fewer tests and fewer parameters means simpler setup.\n- **Relationships:** A module has exactly one interface. Depth is a property of a\n  module measured against its interface. A seam is where the interface lives. An\n  adapter sits at a seam and satisfies the interface. Depth produces leverage for\n  callers and locality for maintainers.\n- **Rejected framings:** Depth as a ratio of implementation lines to interface lines,\n  because it rewards padding the implementation. Interface as only a language keyword\n  or a class's public methods, because that is too narrow. Boundary as a synonym for\n  seam, because it collides with domain-driven design.\n- **Bundled files:** `DEEPENING.md` on deepening a cluster given its dependencies,\n  and `DESIGN-IT-TWICE.md` on spinning up parallel sub-agents to design an interface\n  several radically different ways before comparing them."
+ },
+ {
+  "name": "domain-modeling",
+  "bucket": "engineering",
+  "invocation": "/domain-modeling",
+  "mode": "model",
+  "path": "skills/engineering/domain-modeling/SKILL.md",
+  "purpose": "Actively build and sharpen the project's domain model as you design.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Discussing terminology, writing or editing `CONTEXT.md`, or recording an ADR. Note that merely reading `CONTEXT.md` for vocabulary is not this skill. This skill is for changing the model, not consuming it."
+   },
+   {
+    "label": "What it does during a session",
+    "value": "",
+    "items": [
+     "*Challenges against the glossary.* When a term conflicts with existing language, it says so immediately.",
+     "*Sharpens fuzzy language.* When a term is vague or overloaded, it proposes a precise canonical term.",
+     "*Discusses concrete scenarios.* It invents edge cases that force precision about where one concept ends and another begins.",
+     "*Cross-references with code.* When your account of how something works contradicts the code, it surfaces the contradiction.",
+     "*Updates inline.* Resolved terms go into `CONTEXT.md` immediately, never batched."
+    ]
+   },
+   {
+    "label": "File discipline",
+    "value": "`CONTEXT.md` is a glossary and nothing else. No implementation detail, no specification, no scratch notes. Files get created lazily, only when there is something to write."
+   },
+   {
+    "label": "ADR test",
+    "value": "Offer one only when the decision is hard to reverse, surprising without context, and the result of a real trade-off. If any of the three is missing, skip it."
+   },
+   {
+    "label": "Bundled files",
+    "value": "`CONTEXT-FORMAT.md`, `ADR-FORMAT.md`."
+   }
+  ],
+  "plugin": true,
+  "source": "#### domain-modeling\n\n- **Invocation:** `/domain-modeling`\n- **Mode:** Model-invoked\n- **Path:** `skills/engineering/domain-modeling/SKILL.md`\n- **Purpose:** Actively build and sharpen the project's domain model as you design.\n- **Use when:** Discussing terminology, writing or editing `CONTEXT.md`, or recording\n  an ADR. Note that merely reading `CONTEXT.md` for vocabulary is not this skill.\n  This skill is for changing the model, not consuming it.\n- **What it does during a session:**\n  - *Challenges against the glossary.* When a term conflicts with existing language,\n    it says so immediately.\n  - *Sharpens fuzzy language.* When a term is vague or overloaded, it proposes a\n    precise canonical term.\n  - *Discusses concrete scenarios.* It invents edge cases that force precision about\n    where one concept ends and another begins.\n  - *Cross-references with code.* When your account of how something works\n    contradicts the code, it surfaces the contradiction.\n  - *Updates inline.* Resolved terms go into `CONTEXT.md` immediately, never batched.\n- **File discipline:** `CONTEXT.md` is a glossary and nothing else. No implementation\n  detail, no specification, no scratch notes. Files get created lazily, only when\n  there is something to write.\n- **ADR test:** Offer one only when the decision is hard to reverse, surprising\n  without context, and the result of a real trade-off. If any of the three is\n  missing, skip it.\n- **Bundled files:** `CONTEXT-FORMAT.md`, `ADR-FORMAT.md`."
+ },
+ {
+  "name": "prototype",
+  "bucket": "engineering",
+  "invocation": "/prototype",
+  "mode": "model",
+  "path": "skills/engineering/prototype/SKILL.md",
+  "purpose": "Build throwaway code that answers one design question.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "A question cannot be settled in conversation because it needs to be seen or driven."
+   },
+   {
+    "label": "Two branches",
+    "value": "For \"does this logic or state model feel right\", build a single shareable HTML file with free-play controls and tabbed guided walkthroughs, drivable by a non-developer. For \"what should this look like\", generate several radically different UI variations on one route, switchable by a URL parameter and a floating bar. Getting the branch wrong wastes the whole prototype."
+   },
+   {
+    "label": "Rules for both",
+    "value": "Throwaway from day one and named so a casual reader can tell. Trivial to run, from one command or one double-click. No persistence by default, because persistence is usually the thing being checked. No polish, no tests, no abstractions. Surface the full state after every action or variant switch."
+   },
+   {
+    "label": "Capture",
+    "value": "Fold the validated decision into the real code, commit the prototype to a throwaway branch out of the main line, and leave a pointer to that branch on the implementation issue. Record the verdict and the question it settled. The main branch keeps only the decision."
+   },
+   {
+    "label": "Bundled files",
+    "value": "`LOGIC.md`, `UI.md`."
+   },
+   {
+    "label": "Pairs with",
+    "value": "`/handoff` in both directions, because a prototype lives in its own directory."
+   }
+  ],
+  "plugin": true,
+  "source": "#### prototype\n\n- **Invocation:** `/prototype`\n- **Mode:** Model-invoked\n- **Path:** `skills/engineering/prototype/SKILL.md`\n- **Purpose:** Build throwaway code that answers one design question.\n- **Use when:** A question cannot be settled in conversation because it needs to be\n  seen or driven.\n- **Two branches:** For \"does this logic or state model feel right\", build a single\n  shareable HTML file with free-play controls and tabbed guided walkthroughs, drivable\n  by a non-developer. For \"what should this look like\", generate several radically\n  different UI variations on one route, switchable by a URL parameter and a floating\n  bar. Getting the branch wrong wastes the whole prototype.\n- **Rules for both:** Throwaway from day one and named so a casual reader can tell.\n  Trivial to run, from one command or one double-click. No persistence by default,\n  because persistence is usually the thing being checked. No polish, no tests, no\n  abstractions. Surface the full state after every action or variant switch.\n- **Capture:** Fold the validated decision into the real code, commit the prototype\n  to a throwaway branch out of the main line, and leave a pointer to that branch on\n  the implementation issue. Record the verdict and the question it settled. The main\n  branch keeps only the decision.\n- **Bundled files:** `LOGIC.md`, `UI.md`.\n- **Pairs with:** `/handoff` in both directions, because a prototype lives in its own\n  directory."
+ },
+ {
+  "name": "research",
+  "bucket": "engineering",
+  "invocation": "/research",
+  "mode": "model",
+  "path": "skills/engineering/research/SKILL.md",
+  "purpose": "Investigate a question against high-trust primary sources and capture the findings in the repository.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "A topic needs researching, API or documentation facts need gathering, or reading legwork can be delegated."
+   },
+   {
+    "label": "How it works",
+    "value": "Spins up a background agent so you keep working while it reads. The agent investigates against primary sources, meaning official documentation, source code, specifications, and first-party APIs, rather than secondary write-ups. Every claim gets followed back to the source that owns it. Findings go into a single Markdown file with each claim cited, saved where the repository already keeps such notes."
+   }
+  ],
+  "plugin": true,
+  "source": "#### research\n\n- **Invocation:** `/research`\n- **Mode:** Model-invoked\n- **Path:** `skills/engineering/research/SKILL.md`\n- **Purpose:** Investigate a question against high-trust primary sources and capture\n  the findings in the repository.\n- **Use when:** A topic needs researching, API or documentation facts need gathering,\n  or reading legwork can be delegated.\n- **How it works:** Spins up a background agent so you keep working while it reads.\n  The agent investigates against primary sources, meaning official documentation,\n  source code, specifications, and first-party APIs, rather than secondary write-ups.\n  Every claim gets followed back to the source that owns it. Findings go into a single\n  Markdown file with each claim cited, saved where the repository already keeps such\n  notes."
+ },
+ {
+  "name": "resolving-merge-conflicts",
+  "bucket": "engineering",
+  "invocation": "/resolving-merge-conflicts",
+  "mode": "model",
+  "path": "skills/engineering/resolving-merge-conflicts/SKILL.md",
+  "purpose": "Work an in-progress merge or rebase conflict to completion.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "A merge or rebase is already in progress and conflicted."
+   },
+   {
+    "label": "The five steps",
+    "value": "See the current state of the operation and the conflicting files. Find the primary sources for each side, meaning commit messages, pull requests, and original issues, and understand deeply why each change was made. Resolve each hunk, preserving both intents where possible, and where they are incompatible pick the one matching the merge's stated goal and note the trade-off. Discover the project's automated checks and run them, typically typecheck, then tests, then format. Finish the operation, staging and committing, continuing a rebase until every commit is rebased."
+   },
+   {
+    "label": "Hard rules",
+    "value": "Never invent new behaviour. Always resolve. Never abort."
+   }
+  ],
+  "plugin": true,
+  "source": "#### resolving-merge-conflicts\n\n- **Invocation:** `/resolving-merge-conflicts`\n- **Mode:** Model-invoked\n- **Path:** `skills/engineering/resolving-merge-conflicts/SKILL.md`\n- **Purpose:** Work an in-progress merge or rebase conflict to completion.\n- **Use when:** A merge or rebase is already in progress and conflicted.\n- **The five steps:** See the current state of the operation and the conflicting\n  files. Find the primary sources for each side, meaning commit messages, pull\n  requests, and original issues, and understand deeply why each change was made.\n  Resolve each hunk, preserving both intents where possible, and where they are\n  incompatible pick the one matching the merge's stated goal and note the trade-off.\n  Discover the project's automated checks and run them, typically typecheck, then\n  tests, then format. Finish the operation, staging and committing, continuing a\n  rebase until every commit is rebased.\n- **Hard rules:** Never invent new behaviour. Always resolve. Never abort."
+ },
+ {
+  "name": "wizard",
+  "bucket": "engineering",
+  "invocation": "/wizard",
+  "mode": "model",
+  "path": "skills/engineering/wizard/SKILL.md",
+  "purpose": "Generate an interactive bash wizard that walks a human through steps only a human can perform.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Provisioning infrastructure, setting up credentials or CI secrets, navigating an unfamiliar third-party dashboard, or running a one-off migration or cutover. Not for steps the agent can perform itself."
+   },
+   {
+    "label": "What the template already solves",
+    "value": "Stage-by-stage progress, confirmation gates, cross-platform URL opening including WSL, hidden entry for secrets, idempotent updates to `.env`, writes to GitHub secrets and variables, and a closing summary. The library above the stages marker is identical in every wizard, and that consistency is the point. Never hand-edit it."
+   },
+   {
+    "label": "The four steps",
+    "value": "Scope the procedure by reading the repository first, including environment files, README, compose files, framework configuration, and every workflow reference to a secret or variable. Map each stage's journey as the precise path a human follows, and where the current interface is unknown, ask rather than invent. Author the wizard by copying the template and writing one stage per step in dependency order. Verify and hand off."
+   },
+   {
+    "label": "Standards to hold",
+    "value": "Open the URL before asking for its value. Use hidden entry for anything secret. Persist every captured value. Set only the secrets CI actually needs. Confirm before any irreversible action. Keep each stage to one focused task, because each stage clears the screen."
+   },
+   {
+    "label": "Lifetime",
+    "value": "Ephemeral by default, saved to a scratch path and deleted afterwards. Commit it only when the setup path should live in the repository."
+   },
+   {
+    "label": "Bundled files",
+    "value": "`template.sh`."
+   }
+  ],
+  "plugin": true,
+  "source": "#### wizard\n\n- **Invocation:** `/wizard`\n- **Mode:** Model-invoked\n- **Path:** `skills/engineering/wizard/SKILL.md`\n- **Purpose:** Generate an interactive bash wizard that walks a human through steps\n  only a human can perform.\n- **Use when:** Provisioning infrastructure, setting up credentials or CI secrets,\n  navigating an unfamiliar third-party dashboard, or running a one-off migration or\n  cutover. Not for steps the agent can perform itself.\n- **What the template already solves:** Stage-by-stage progress, confirmation gates,\n  cross-platform URL opening including WSL, hidden entry for secrets, idempotent\n  updates to `.env`, writes to GitHub secrets and variables, and a closing summary.\n  The library above the stages marker is identical in every wizard, and that\n  consistency is the point. Never hand-edit it.\n- **The four steps:** Scope the procedure by reading the repository first, including\n  environment files, README, compose files, framework configuration, and every\n  workflow reference to a secret or variable. Map each stage's journey as the precise\n  path a human follows, and where the current interface is unknown, ask rather than\n  invent. Author the wizard by copying the template and writing one stage per step in\n  dependency order. Verify and hand off.\n- **Standards to hold:** Open the URL before asking for its value. Use hidden entry\n  for anything secret. Persist every captured value. Set only the secrets CI actually\n  needs. Confirm before any irreversible action. Keep each stage to one focused task,\n  because each stage clears the screen.\n- **Lifetime:** Ephemeral by default, saved to a scratch path and deleted afterwards.\n  Commit it only when the setup path should live in the repository.\n- **Bundled files:** `template.sh`."
+ },
+ {
+  "name": "grill-me",
+  "bucket": "productivity",
+  "invocation": "/grill-me",
+  "mode": "user",
+  "path": "skills/productivity/grill-me/SKILL.md",
+  "purpose": "Get relentlessly interviewed about a plan or design until every branch of the design tree is resolved.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "You have an idea and no repository to leave a trail in, or you want the interview without the documentation side effects."
+   },
+   {
+    "label": "How it works",
+    "value": "It is a one-line skill that runs the `/grilling` session. The discipline lives in `/grilling`."
+   },
+   {
+    "label": "Note",
+    "value": "This is the skill from the talk. Two lines of instruction turn the agent into a productive adversary that will ask forty, sixty, sometimes a hundred questions before it is satisfied that understanding is shared."
+   }
+  ],
+  "plugin": true,
+  "source": "#### grill-me\n\n- **Invocation:** `/grill-me`\n- **Mode:** User-invoked\n- **Path:** `skills/productivity/grill-me/SKILL.md`\n- **Purpose:** Get relentlessly interviewed about a plan or design until every branch\n  of the design tree is resolved.\n- **Use when:** You have an idea and no repository to leave a trail in, or you want\n  the interview without the documentation side effects.\n- **How it works:** It is a one-line skill that runs the `/grilling` session. The\n  discipline lives in `/grilling`.\n- **Note:** This is the skill from the talk. Two lines of instruction turn the agent\n  into a productive adversary that will ask forty, sixty, sometimes a hundred\n  questions before it is satisfied that understanding is shared."
+ },
+ {
+  "name": "grilling",
+  "bucket": "productivity",
+  "invocation": "/grilling",
+  "mode": "model",
+  "path": "skills/productivity/grilling/SKILL.md",
+  "purpose": "The reusable interview primitive behind `grill-me`, `grill-with-docs`, `triage`, `wayfinder`, and `improve-codebase-architecture`.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Any plan, decision, or idea needs stress-testing."
+   },
+   {
+    "label": "How it works",
+    "value": "The plan is mapped as a design tree, where every decision branches into the decisions that hang off it. Work proceeds in rounds. The frontier is every decision whose prerequisites are settled, meaning the questions answerable now without guessing. The whole frontier goes out in one round, numbered, each question carrying a recommended answer. Then it waits."
+   },
+   {
+    "label": "Question format",
+    "value": "A numbered question with a title, a body that may run to several paragraphs and may offer choices, followed by the recommended answer."
+   },
+   {
+    "label": "Round mechanics",
+    "value": "Each round of answers reshapes the tree. Settled decisions push the frontier outward and unblock questions that depended on them. A question whose answer depends on another question still open belongs to a later round, not this one."
+   },
+   {
+    "label": "Division of labour",
+    "value": "Finding facts is the agent's job, never yours. When a question needs a fact from the environment, the agent dispatches a sub-agent rather than asking you something it could look up. It does not block on that: only questions downstream of the exploration wait. The decisions are yours, and each one gets put to you."
+   },
+   {
+    "label": "Completion",
+    "value": "The session ends when the frontier is empty, meaning every branch was visited and nothing was silently assumed. The agent does not act until you confirm understanding is shared."
+   }
+  ],
+  "plugin": true,
+  "source": "#### grilling\n\n- **Invocation:** `/grilling`\n- **Mode:** Model-invoked\n- **Path:** `skills/productivity/grilling/SKILL.md`\n- **Purpose:** The reusable interview primitive behind `grill-me`, `grill-with-docs`,\n  `triage`, `wayfinder`, and `improve-codebase-architecture`.\n- **Use when:** Any plan, decision, or idea needs stress-testing.\n- **How it works:** The plan is mapped as a design tree, where every decision branches\n  into the decisions that hang off it. Work proceeds in rounds. The frontier is every\n  decision whose prerequisites are settled, meaning the questions answerable now\n  without guessing. The whole frontier goes out in one round, numbered, each question\n  carrying a recommended answer. Then it waits.\n- **Question format:** A numbered question with a title, a body that may run to\n  several paragraphs and may offer choices, followed by the recommended answer.\n- **Round mechanics:** Each round of answers reshapes the tree. Settled decisions push\n  the frontier outward and unblock questions that depended on them. A question whose\n  answer depends on another question still open belongs to a later round, not this\n  one.\n- **Division of labour:** Finding facts is the agent's job, never yours. When a\n  question needs a fact from the environment, the agent dispatches a sub-agent rather\n  than asking you something it could look up. It does not block on that: only\n  questions downstream of the exploration wait. The decisions are yours, and each one\n  gets put to you.\n- **Completion:** The session ends when the frontier is empty, meaning every branch\n  was visited and nothing was silently assumed. The agent does not act until you\n  confirm understanding is shared."
+ },
+ {
+  "name": "handoff",
+  "bucket": "productivity",
+  "invocation": "/handoff",
+  "mode": "user",
+  "path": "skills/productivity/handoff/SKILL.md",
+  "purpose": "Compact the current conversation into a document another agent can pick up.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Crossing a session boundary, moving to a prototype directory and back, or ending a session with work still open."
+   },
+   {
+    "label": "How it works",
+    "value": "Writes a handoff document summarising the conversation, saved to the operating system temporary directory rather than the workspace. It includes a suggested skills section naming what the next agent should invoke. It does not duplicate content already captured in specifications, plans, ADRs, issues, commits, or diffs, and references those by path or URL instead. It redacts secrets and personal information. If you pass an argument, it treats that as the focus of the next session and tailors the document accordingly."
+   }
+  ],
+  "plugin": true,
+  "source": "#### handoff\n\n- **Invocation:** `/handoff`\n- **Mode:** User-invoked\n- **Path:** `skills/productivity/handoff/SKILL.md`\n- **Purpose:** Compact the current conversation into a document another agent can pick\n  up.\n- **Use when:** Crossing a session boundary, moving to a prototype directory and back,\n  or ending a session with work still open.\n- **How it works:** Writes a handoff document summarising the conversation, saved to\n  the operating system temporary directory rather than the workspace. It includes a\n  suggested skills section naming what the next agent should invoke. It does not\n  duplicate content already captured in specifications, plans, ADRs, issues, commits,\n  or diffs, and references those by path or URL instead. It redacts secrets and\n  personal information. If you pass an argument, it treats that as the focus of the\n  next session and tailors the document accordingly."
+ },
+ {
+  "name": "teach",
+  "bucket": "productivity",
+  "invocation": "/teach",
+  "mode": "user",
+  "path": "skills/productivity/teach/SKILL.md",
+  "purpose": "Teach a skill or concept across multiple sessions, using the current directory as a stateful teaching workspace.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "You want to learn something properly rather than get one explanation."
+   },
+   {
+    "label": "Workspace files",
+    "value": "",
+    "items": [
+     "`MISSION.md`, capturing why you want the topic, which grounds all teaching.",
+     "`reference/*.html`, compressed learnings such as cheat sheets, reference algorithms, syntax summaries, and glossaries, built to print well and be scanned quickly.",
+     "`RESOURCES.md`, the list of resources that ground the teaching.",
+     "`learning-records/*.md`, numbered records of what you have learned, equivalent to decision records, used to calculate the zone of proximal development.",
+     "`lessons/*.html`, the primary unit of teaching, each one self-contained and tightly scoped to one thing tied to the mission.",
+     "`assets/*`, reusable components shared across lessons.",
+     "`NOTES.md`, a scratchpad for preferences and working notes."
+    ]
+   },
+   {
+    "label": "Philosophy",
+    "value": "Deep learning needs knowledge captured from high-quality sources, skills acquired through interactive lessons, and wisdom from other practitioners. Before `RESOURCES.md` is well populated, the priority is finding high-quality resources. Parametric knowledge is never trusted. The balance shifts by topic: theoretical physics leans toward knowledge, physical practice leans toward skills."
+   },
+   {
+    "label": "Two kinds of strength",
+    "value": "Fluency strength is in-the-moment retrieval. Storage strength is long-term retention. The skill treats them separately."
+   },
+   {
+    "label": "Bundled files",
+    "value": "`MISSION-FORMAT.md`, `RESOURCES-FORMAT.md`, `LEARNING-RECORD-FORMAT.md`, `GLOSSARY-FORMAT.md`."
+   }
+  ],
+  "plugin": true,
+  "source": "#### teach\n\n- **Invocation:** `/teach`\n- **Mode:** User-invoked\n- **Path:** `skills/productivity/teach/SKILL.md`\n- **Purpose:** Teach a skill or concept across multiple sessions, using the current\n  directory as a stateful teaching workspace.\n- **Use when:** You want to learn something properly rather than get one explanation.\n- **Workspace files:**\n  - `MISSION.md`, capturing why you want the topic, which grounds all teaching.\n  - `reference/*.html`, compressed learnings such as cheat sheets, reference\n    algorithms, syntax summaries, and glossaries, built to print well and be scanned\n    quickly.\n  - `RESOURCES.md`, the list of resources that ground the teaching.\n  - `learning-records/*.md`, numbered records of what you have learned, equivalent to\n    decision records, used to calculate the zone of proximal development.\n  - `lessons/*.html`, the primary unit of teaching, each one self-contained and\n    tightly scoped to one thing tied to the mission.\n  - `assets/*`, reusable components shared across lessons.\n  - `NOTES.md`, a scratchpad for preferences and working notes.\n- **Philosophy:** Deep learning needs knowledge captured from high-quality sources,\n  skills acquired through interactive lessons, and wisdom from other practitioners.\n  Before `RESOURCES.md` is well populated, the priority is finding high-quality\n  resources. Parametric knowledge is never trusted. The balance shifts by topic:\n  theoretical physics leans toward knowledge, physical practice leans toward skills.\n- **Two kinds of strength:** Fluency strength is in-the-moment retrieval. Storage\n  strength is long-term retention. The skill treats them separately.\n- **Bundled files:** `MISSION-FORMAT.md`, `RESOURCES-FORMAT.md`,\n  `LEARNING-RECORD-FORMAT.md`, `GLOSSARY-FORMAT.md`."
+ },
+ {
+  "name": "to-questionnaire",
+  "bucket": "productivity",
+  "invocation": "/to-questionnaire",
+  "mode": "user",
+  "path": "skills/productivity/to-questionnaire/SKILL.md",
+  "purpose": "Turn a decision you cannot make alone into a questionnaire for the one person who can.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Someone else holds knowledge you need, and you want it either async or in one meeting."
+   },
+   {
+    "label": "Central move",
+    "value": "Grill the send, not the subject. The interview covers only what you can always answer: who it goes to, and what you need back. The questions in the document then target the gap between what the recipient knows and what you need."
+   },
+   {
+    "label": "Three steps",
+    "value": "Establish who the recipient is, their role, expertise, and relationship to you, which fixes tone and how much context the document must carry. Establish what you need back as a concrete list. Write the questionnaire to a file in the current directory and report the path."
+   },
+   {
+    "label": "Document structure",
+    "value": "A purpose line naming the decision riding on it, a from and to line explaining how answers will be used, one paragraph of context, a note on deadline and effort making clear that partial answers and admissions of uncertainty are useful, then themed sections. Questions run most important first, because async may give you only one pass. Every question is one idea, never compound, with an answer stub beneath it."
+   }
+  ],
+  "plugin": true,
+  "source": "#### to-questionnaire\n\n- **Invocation:** `/to-questionnaire`\n- **Mode:** User-invoked\n- **Path:** `skills/productivity/to-questionnaire/SKILL.md`\n- **Purpose:** Turn a decision you cannot make alone into a questionnaire for the one\n  person who can.\n- **Use when:** Someone else holds knowledge you need, and you want it either async or\n  in one meeting.\n- **Central move:** Grill the send, not the subject. The interview covers only what\n  you can always answer: who it goes to, and what you need back. The questions in the\n  document then target the gap between what the recipient knows and what you need.\n- **Three steps:** Establish who the recipient is, their role, expertise, and\n  relationship to you, which fixes tone and how much context the document must carry.\n  Establish what you need back as a concrete list. Write the questionnaire to a file\n  in the current directory and report the path.\n- **Document structure:** A purpose line naming the decision riding on it, a from and\n  to line explaining how answers will be used, one paragraph of context, a note on\n  deadline and effort making clear that partial answers and admissions of uncertainty\n  are useful, then themed sections. Questions run most important first, because async\n  may give you only one pass. Every question is one idea, never compound, with an\n  answer stub beneath it."
+ },
+ {
+  "name": "wait-what",
+  "bucket": "productivity",
+  "invocation": "/wait-what",
+  "mode": "user",
+  "path": "skills/productivity/wait-what/SKILL.md",
+  "purpose": "Make the agent re-pitch a message that did not land.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "The moment you lose the thread. Immediately, not three messages later."
+   },
+   {
+    "label": "How it works",
+    "value": "A single instruction. The agent stops, adds the context you were missing, and re-pitches in simplified technical English, using the vocabulary from `CONTEXT.md`."
+   },
+   {
+    "label": "Why it works",
+    "value": "The re-pitch is anchored to your project glossary, so the explanation lands in terms you already own rather than generic phrasing."
+   }
+  ],
+  "plugin": true,
+  "source": "#### wait-what\n\n- **Invocation:** `/wait-what`\n- **Mode:** User-invoked\n- **Path:** `skills/productivity/wait-what/SKILL.md`\n- **Purpose:** Make the agent re-pitch a message that did not land.\n- **Use when:** The moment you lose the thread. Immediately, not three messages later.\n- **How it works:** A single instruction. The agent stops, adds the context you were\n  missing, and re-pitches in simplified technical English, using the vocabulary from\n  `CONTEXT.md`.\n- **Why it works:** The re-pitch is anchored to your project glossary, so the\n  explanation lands in terms you already own rather than generic phrasing."
+ },
+ {
+  "name": "writing-for-agents",
+  "bucket": "productivity",
+  "invocation": "/writing-for-agents",
+  "mode": "model",
+  "path": "skills/productivity/writing-for-agents/SKILL.md",
+  "purpose": "Reference for writing any document an agent consumes.",
+  "fields": [
+   {
+    "label": "Use when",
+    "value": "Creating or editing a skill, or modifying `AGENTS.md` or `CLAUDE.md`."
+   },
+   {
+    "label": "Core claim",
+    "value": "The packaging differs but the writing does not. The same levers make each document predictable, meaning the agent takes the same process every run, not that it produces the same output."
+   },
+   {
+    "label": "Context pointers",
+    "value": "A pointer does two jobs: state what the material is, and list the branches that should trigger reaching it. A must-have target behind a weakly worded pointer is a variance bug, so sharpen the wording before inlining the material. Rules: front-load the leading word, use one trigger per branch and collapse synonyms, and cut identity the body already carries."
+   },
+   {
+    "label": "The two budgets",
+    "value": "Context load is what always-loaded material costs the agent's window every turn. Cognitive load is what it costs the human to know which documents exist. Cognitive load is not to be minimised blindly, because it is the price of human agency. Spend it where judgement matters and remove it where it does not."
+   },
+   {
+    "label": "Information hierarchy",
+    "value": "Documents mix steps, meaning ordered actions, and reference, meaning facts consulted on demand. Three tiers: in-file step, in-file reference, and disclosed reference behind a pointer. Push too little down and the top bloats. Push too much and you hide what the agent needs."
+   },
+   {
+    "label": "The disclosure test",
+    "value": "Inline what every branch needs. Push behind a pointer what only some branches reach."
+   },
+   {
+    "label": "Bundled files",
+    "value": "`SKILL-MECHANICS.md`, covering frontmatter, the invocation choice, and router skills."
+   }
+  ],
+  "plugin": true,
+  "source": "#### writing-for-agents\n\n- **Invocation:** `/writing-for-agents`\n- **Mode:** Model-invoked\n- **Path:** `skills/productivity/writing-for-agents/SKILL.md`\n- **Purpose:** Reference for writing any document an agent consumes.\n- **Use when:** Creating or editing a skill, or modifying `AGENTS.md` or `CLAUDE.md`.\n- **Core claim:** The packaging differs but the writing does not. The same levers make\n  each document predictable, meaning the agent takes the same process every run, not\n  that it produces the same output.\n- **Context pointers:** A pointer does two jobs: state what the material is, and list\n  the branches that should trigger reaching it. A must-have target behind a weakly\n  worded pointer is a variance bug, so sharpen the wording before inlining the\n  material. Rules: front-load the leading word, use one trigger per branch and\n  collapse synonyms, and cut identity the body already carries.\n- **The two budgets:** Context load is what always-loaded material costs the agent's\n  window every turn. Cognitive load is what it costs the human to know which documents\n  exist. Cognitive load is not to be minimised blindly, because it is the price of\n  human agency. Spend it where judgement matters and remove it where it does not.\n- **Information hierarchy:** Documents mix steps, meaning ordered actions, and\n  reference, meaning facts consulted on demand. Three tiers: in-file step, in-file\n  reference, and disclosed reference behind a pointer. Push too little down and the\n  top bloats. Push too much and you hide what the agent needs.\n- **The disclosure test:** Inline what every branch needs. Push behind a pointer what\n  only some branches reach.\n- **Bundled files:** `SKILL-MECHANICS.md`, covering frontmatter, the invocation\n  choice, and router skills."
+ },
+ {
+  "name": "git-guardrails-claude-code",
+  "bucket": "misc",
+  "invocation": "/git-guardrails-claude-code",
+  "mode": "model",
+  "path": "skills/misc/git-guardrails-claude-code/SKILL.md",
+  "purpose": "Install hooks that block dangerous git commands before they execute.",
+  "fields": [
+   {
+    "label": "What gets blocked",
+    "value": "`git push` in all variants including force, `git reset --hard`, `git clean -f` and `-fd`, `git branch -D`, and `git checkout .` or `git restore .`."
+   },
+   {
+    "label": "Bundled files",
+    "value": "`scripts/block-dangerous-git.sh`."
+   }
+  ],
+  "plugin": false,
+  "source": "#### git-guardrails-claude-code\n\n- **Path:** `skills/misc/git-guardrails-claude-code/SKILL.md`\n- **Mode:** Model-invoked\n- **Purpose:** Install hooks that block dangerous git commands before they execute.\n- **What gets blocked:** `git push` in all variants including force, `git reset\n  --hard`, `git clean -f` and `-fd`, `git branch -D`, and `git checkout .` or `git\n  restore .`.\n- **Bundled files:** `scripts/block-dangerous-git.sh`."
+ },
+ {
+  "name": "setup-pre-commit",
+  "bucket": "misc",
+  "invocation": "/setup-pre-commit",
+  "mode": "model",
+  "path": "skills/misc/setup-pre-commit/SKILL.md",
+  "purpose": "Set up commit-time formatting, typechecking, and tests.",
+  "fields": [
+   {
+    "label": "What it installs",
+    "value": "A Husky pre-commit hook, lint-staged running Prettier over staged files, a Prettier configuration if one is missing, and typecheck and test scripts wired into the hook."
+   }
+  ],
+  "plugin": false,
+  "source": "#### setup-pre-commit\n\n- **Path:** `skills/misc/setup-pre-commit/SKILL.md`\n- **Mode:** Model-invoked\n- **Purpose:** Set up commit-time formatting, typechecking, and tests.\n- **What it installs:** A Husky pre-commit hook, lint-staged running Prettier over\n  staged files, a Prettier configuration if one is missing, and typecheck and test\n  scripts wired into the hook."
+ },
+ {
+  "name": "migrate-to-shoehorn",
+  "bucket": "misc",
+  "invocation": "/migrate-to-shoehorn",
+  "mode": "model",
+  "path": "skills/misc/migrate-to-shoehorn/SKILL.md",
+  "purpose": "Migrate test files from type assertions to `@total-typescript/shoehorn`.",
+  "fields": [
+   {
+    "label": "Why",
+    "value": "Shoehorn allows partial test data while keeping the type checker satisfied, replacing assertions with type-safe alternatives."
+   },
+   {
+    "label": "Hard rule",
+    "value": "Test code only. Never use it in production code."
+   }
+  ],
+  "plugin": false,
+  "source": "#### migrate-to-shoehorn\n\n- **Path:** `skills/misc/migrate-to-shoehorn/SKILL.md`\n- **Mode:** Model-invoked\n- **Purpose:** Migrate test files from type assertions to `@total-typescript/shoehorn`.\n- **Why:** Shoehorn allows partial test data while keeping the type checker satisfied,\n  replacing assertions with type-safe alternatives.\n- **Hard rule:** Test code only. Never use it in production code."
+ },
+ {
+  "name": "scaffold-exercises",
+  "bucket": "misc",
+  "invocation": "/scaffold-exercises",
+  "mode": "model",
+  "path": "skills/misc/scaffold-exercises/SKILL.md",
+  "purpose": "Create exercise directory structures with sections, problems, solutions, and explainers that pass linting.",
+  "fields": [
+   {
+    "label": "Naming convention",
+    "value": "Sections are numbered directories inside `exercises/`. Exercises are numbered within a section using a section and exercise number. Names are lowercase with hyphens."
+   }
+  ],
+  "plugin": false,
+  "source": "#### scaffold-exercises\n\n- **Path:** `skills/misc/scaffold-exercises/SKILL.md`\n- **Mode:** Model-invoked\n- **Purpose:** Create exercise directory structures with sections, problems,\n  solutions, and explainers that pass linting.\n- **Naming convention:** Sections are numbered directories inside `exercises/`.\n  Exercises are numbered within a section using a section and exercise number. Names\n  are lowercase with hyphens."
+ },
+ {
+  "name": "loop-me",
+  "bucket": "in-progress",
+  "invocation": "/loop-me",
+  "mode": "user",
+  "path": "skills/in-progress/loop-me/SKILL.md",
+  "purpose": "Grill yourself into implementable workflow specifications over multiple sessions, using the current directory as a stateful workspace.",
+  "fields": [
+   {
+    "label": "The loop lens",
+    "value": "A loop is a recurring pattern in your life: a career, a week, a morning, a single repeated activity. Picturing a life as loops within loops reveals how predictable its activities are, which is what makes them worth delegating. A workflow is the specification of one loop made real, and workflows live in `workflows/*.md` as the source of truth."
+   },
+   {
+    "label": "Vocabulary",
+    "value": "A trigger is what fires each run, either an event or a schedule, with event-triggering usually more efficient. A checkpoint is a human-in-the-loop point for verification or decision, and some workflows have none. Push right means deferring the checkpoint as far as it will go, doing maximal work before involving the human so they are asked once, late, with everything prepared."
+   },
+   {
+    "label": "Constraint",
+    "value": "Mandate nothing structural. A workflow needs no AI, no checkpoint, and no schedule unless the interview shows it does."
+   }
+  ],
+  "plugin": false,
+  "source": "#### loop-me\n\n- **Path:** `skills/in-progress/loop-me/SKILL.md`\n- **Mode:** User-invoked\n- **Purpose:** Grill yourself into implementable workflow specifications over multiple\n  sessions, using the current directory as a stateful workspace.\n- **The loop lens:** A loop is a recurring pattern in your life: a career, a week, a\n  morning, a single repeated activity. Picturing a life as loops within loops reveals\n  how predictable its activities are, which is what makes them worth delegating. A\n  workflow is the specification of one loop made real, and workflows live in\n  `workflows/*.md` as the source of truth.\n- **Vocabulary:** A trigger is what fires each run, either an event or a schedule,\n  with event-triggering usually more efficient. A checkpoint is a human-in-the-loop\n  point for verification or decision, and some workflows have none. Push right means\n  deferring the checkpoint as far as it will go, doing maximal work before involving\n  the human so they are asked once, late, with everything prepared.\n- **Constraint:** Mandate nothing structural. A workflow needs no AI, no checkpoint,\n  and no schedule unless the interview shows it does."
+ },
+ {
+  "name": "claude-handoff",
+  "bucket": "in-progress",
+  "invocation": "/claude-handoff",
+  "mode": "user",
+  "path": "skills/in-progress/claude-handoff/SKILL.md",
+  "purpose": "Hand the conversation to a fresh background agent that picks up immediately.",
+  "fields": [
+   {
+    "label": "How it differs from `/handoff`",
+    "value": "Instead of saving a document, it launches a background agent seeded with the summary as its prompt, starting in the current working directory and returning immediately."
+   },
+   {
+    "label": "Requirement",
+    "value": "Always pass a descriptive name, because it sets the display name in the job list, session picker, and terminal title."
+   },
+   {
+    "label": "Same disciplines as `/handoff`",
+    "value": "A suggested skills section, no duplication of content already captured elsewhere, and redaction of secrets, which matters more here because the summary becomes the agent's prompt."
+   }
+  ],
+  "plugin": false,
+  "source": "#### claude-handoff\n\n- **Path:** `skills/in-progress/claude-handoff/SKILL.md`\n- **Mode:** User-invoked\n- **Purpose:** Hand the conversation to a fresh background agent that picks up\n  immediately.\n- **How it differs from `/handoff`:** Instead of saving a document, it launches a\n  background agent seeded with the summary as its prompt, starting in the current\n  working directory and returning immediately.\n- **Requirement:** Always pass a descriptive name, because it sets the display name in\n  the job list, session picker, and terminal title.\n- **Same disciplines as `/handoff`:** A suggested skills section, no duplication of\n  content already captured elsewhere, and redaction of secrets, which matters more\n  here because the summary becomes the agent's prompt."
+ },
+ {
+  "name": "setup-ts-deep-modules",
+  "bucket": "in-progress",
+  "invocation": "/setup-ts-deep-modules",
+  "mode": "user",
+  "path": "skills/in-progress/setup-ts-deep-modules/SKILL.md",
+  "purpose": "Make every package in a TypeScript repository a deep module, enforced by tooling.",
+  "fields": [
+   {
+    "label": "The shape enforced",
+    "value": "A package's public surface is its entry-point files at the package root. Everything in subfolders is hidden. Implementation lives in `lib/` and is free to import itself. Tests are co-located in a subfolder, which makes them private. A package may expose several entry points."
+   },
+   {
+    "label": "How",
+    "value": "Installs dependency-cruiser and the rules that make entry points the only way in, then proves the rules bite."
+   },
+   {
+    "label": "Bundled files",
+    "value": "`dependency-cruiser.config.cjs`."
+   },
+   {
+    "label": "Reads vocabulary from",
+    "value": "`/codebase-design`."
+   }
+  ],
+  "plugin": false,
+  "source": "#### setup-ts-deep-modules\n\n- **Path:** `skills/in-progress/setup-ts-deep-modules/SKILL.md`\n- **Mode:** User-invoked\n- **Purpose:** Make every package in a TypeScript repository a deep module, enforced\n  by tooling.\n- **The shape enforced:** A package's public surface is its entry-point files at the\n  package root. Everything in subfolders is hidden. Implementation lives in `lib/`\n  and is free to import itself. Tests are co-located in a subfolder, which makes them\n  private. A package may expose several entry points.\n- **How:** Installs dependency-cruiser and the rules that make entry points the only\n  way in, then proves the rules bite.\n- **Bundled files:** `dependency-cruiser.config.cjs`.\n- **Reads vocabulary from:** `/codebase-design`."
+ },
+ {
+  "name": "writing-fragments",
+  "bucket": "in-progress",
+  "invocation": "/writing-fragments",
+  "mode": "user",
+  "path": "skills/in-progress/writing-fragments/SKILL.md",
+  "purpose": "Mine you for fragments and collect them as raw material.",
+  "fields": [
+   {
+    "label": "Stage",
+    "value": "Pure explore. Widen the space of what could be written without committing to structure. Imposing phases, outlines, or article structure is out of scope."
+   },
+   {
+    "label": "How it works",
+    "value": "Runs a grilling session about whatever you want to write about. As fragments emerge from either side of the conversation, they get appended to one Markdown file. Capture starts from the very first thing you say, including the opening prompt. The file opens with a single working title and nothing else: no metadata, no table of contents, no date."
+   }
+  ],
+  "plugin": false,
+  "source": "#### writing-fragments\n\n- **Path:** `skills/in-progress/writing-fragments/SKILL.md`\n- **Mode:** User-invoked\n- **Purpose:** Mine you for fragments and collect them as raw material.\n- **Stage:** Pure explore. Widen the space of what could be written without committing\n  to structure. Imposing phases, outlines, or article structure is out of scope.\n- **How it works:** Runs a grilling session about whatever you want to write about. As\n  fragments emerge from either side of the conversation, they get appended to one\n  Markdown file. Capture starts from the very first thing you say, including the\n  opening prompt. The file opens with a single working title and nothing else: no\n  metadata, no table of contents, no date."
+ },
+ {
+  "name": "writing-shape",
+  "bucket": "in-progress",
+  "invocation": "/writing-shape",
+  "mode": "user",
+  "path": "skills/in-progress/writing-shape/SKILL.md",
+  "purpose": "Shape a pile of raw material into an article, paragraph by paragraph.",
+  "fields": [
+   {
+    "label": "Stage",
+    "value": "Exploit. The exploring is done and the pile is fixed, so commit to a structure and mine the pile to fill it."
+   },
+   {
+    "label": "How it works",
+    "value": "Reads the input file end to end first. The input file is read-only to this skill, and the article is written separately. Format of the input does not matter: a tidy list, a wall of prose, or a transcript."
+   },
+   {
+    "label": "Grounding",
+    "value": "Settle what the reader knows walking in. Everything else must be grounded by an earlier block before a later block can lean on it."
+   }
+  ],
+  "plugin": false,
+  "source": "#### writing-shape\n\n- **Path:** `skills/in-progress/writing-shape/SKILL.md`\n- **Mode:** User-invoked\n- **Purpose:** Shape a pile of raw material into an article, paragraph by paragraph.\n- **Stage:** Exploit. The exploring is done and the pile is fixed, so commit to a\n  structure and mine the pile to fill it.\n- **How it works:** Reads the input file end to end first. The input file is read-only\n  to this skill, and the article is written separately. Format of the input does not\n  matter: a tidy list, a wall of prose, or a transcript.\n- **Grounding:** Settle what the reader knows walking in. Everything else must be\n  grounded by an earlier block before a later block can lean on it."
+ },
+ {
+  "name": "writing-beats",
+  "bucket": "in-progress",
+  "invocation": "/writing-beats",
+  "mode": "user",
+  "path": "skills/in-progress/writing-beats/SKILL.md",
+  "purpose": "Assemble raw material into a journey of beats.",
+  "fields": [
+   {
+    "label": "Stage",
+    "value": "Exploit, run as a choose-your-own-adventure."
+   },
+   {
+    "label": "The loop",
+    "value": "Establish the prerequisites, meaning what the audience already knows. Offer two or three candidate starting beats, each a different entry point, each leaning only on grounded concepts and each noting what new concepts it grounds. You pick one. Only that beat gets written to the article file, then it stops. It re-reads the article from disk and offers the next candidates, each reachable from the current grounded set. Repeat until the article reaches a natural end."
+   },
+   {
+    "label": "Beat length",
+    "value": "Whatever that beat naturally is, from one sentence to several paragraphs."
+   }
+  ],
+  "plugin": false,
+  "source": "#### writing-beats\n\n- **Path:** `skills/in-progress/writing-beats/SKILL.md`\n- **Mode:** User-invoked\n- **Purpose:** Assemble raw material into a journey of beats.\n- **Stage:** Exploit, run as a choose-your-own-adventure.\n- **The loop:** Establish the prerequisites, meaning what the audience already knows.\n  Offer two or three candidate starting beats, each a different entry point, each\n  leaning only on grounded concepts and each noting what new concepts it grounds. You\n  pick one. Only that beat gets written to the article file, then it stops. It\n  re-reads the article from disk and offers the next candidates, each reachable from\n  the current grounded set. Repeat until the article reaches a natural end.\n- **Beat length:** Whatever that beat naturally is, from one sentence to several\n  paragraphs."
+ }
+];
+
+export const failures: string[][] = [["1","The agent did not build what I wanted","No shared design concept between human and agent","Interview before building","`/grill-me`, `/grill-with-docs`, `/grilling`"],["2","The agent is far too verbose","No shared language for the domain","Build a glossary the agent reads","`/domain-modeling`, `CONTEXT.md`, `/wait-what`"],["3","The code does not work","Weak or unused feedback loops","Small steps against a tight loop","`/tdd`, `/diagnosing-bugs`, `/code-review`"],["4","We built a ball of mud","No investment in design","Deep modules and honest seams","`/codebase-design`, `/improve-codebase-architecture`"]];
+
+export const flow: string[][] = [["1","`/grill-with-docs`","Sharpen the idea by interview, leaving a paper trail in `CONTEXT.md` and ADRs. Use `/grill-me` instead when there is no working directory."],["2","`/prototype`","Only when a question needs a runnable answer. Bridge in and out with `/handoff`, because a prototype lives in its own directory."],["3a","`/to-spec` then `/to-tickets`","For a multi-session build. Produces a specification, then tracer-bullet tickets with blocking edges."],["3b","`/implement`","For a single-session build, in the same context window."],["4","`/implement` per ticket","Each ticket in a fresh context. Drives `/tdd` internally at agreed seams."],["5","`/code-review`","Two-axis review of the diff before committing. Called automatically by `/implement`."]];
+
+export const onramps: string[][] = [["Bugs and requests piling up","`/triage`","Only for issues you did not create. Tickets from `/to-tickets` are already agent-ready and must not be triaged."],["Something is broken","`/diagnosing-bugs`","For hard bugs, flakes, and regressions. Hands off to `/improve-codebase-architecture` when the finding is that no good seam exists."],["A large, foggy effort","`/wayfinder`","For work too big for one session, where the route to the destination is not visible yet."]];
+
+export const books: string[][] = [["A Philosophy of Software Design","John Ousterhout","Complexity as resistance to change. Deep versus shallow modules. Design it twice."],["The Pragmatic Programmer","David Thomas and Andrew Hunt","Nobody knows exactly what they want. Software entropy. The rate of feedback is your speed limit. Tracer bullets."],["The Design of Design","Frederick P. Brooks","The design concept. The design tree."],["Domain-Driven Design","Eric Evans","Ubiquitous language. Bounded contexts."],["Extreme Programming Explained","Kent Beck","Invest in the design of the system every day."],["Refactoring","Martin Fowler","The code smell baseline used by the review skill."],["Working Effectively with Legacy Code","Michael Feathers","The seam."]];
+
+export type Term = { term: string; group: string; definition: string };
+export const vocab: Term[] = [
+ {
+  "term": "Design concept",
+  "group": "Conversation and alignment",
+  "definition": "The shared, unwritten understanding of the thing being built, held jointly by you and the agent. Not an artifact. Named by Frederick Brooks."
+ },
+ {
+  "term": "Design tree",
+  "group": "Conversation and alignment",
+  "definition": "The structure of a plan, where each decision branches into the decisions that hang off it."
+ },
+ {
+  "term": "Frontier",
+  "group": "Conversation and alignment",
+  "definition": "Every decision whose prerequisites are already settled. These are the questions answerable now, without guessing at answers not yet heard."
+ },
+ {
+  "term": "Round",
+  "group": "Conversation and alignment",
+  "definition": "One pass over the whole frontier. Questions are numbered, each carries a recommended answer, and the agent waits for replies before recomputing the frontier."
+ },
+ {
+  "term": "Grilling",
+  "group": "Conversation and alignment",
+  "definition": "The interview discipline that works the design tree round by round until the frontier is empty."
+ },
+ {
+  "term": "Ubiquitous language",
+  "group": "Domain and language",
+  "definition": "One vocabulary shared by conversation, code, and documentation, all derived from the same domain model."
+ },
+ {
+  "term": "CONTEXT.md",
+  "group": "Domain and language",
+  "definition": "The file holding that vocabulary. A glossary and nothing else. No implementation detail, no specifications, no scratch notes."
+ },
+ {
+  "term": "CONTEXT-MAP.md",
+  "group": "Domain and language",
+  "definition": "Present only when a repository has multiple bounded contexts. It points at where each context lives."
+ },
+ {
+  "term": "ADR",
+  "group": "Domain and language",
+  "definition": "Architectural Decision Record. Numbered files in `docs/adr/`. Written only when a decision is hard to reverse, surprising without context, and the result of a real trade-off. If any of the three is missing, skip it."
+ },
+ {
+  "term": "Module",
+  "group": "Code design",
+  "definition": "Anything with an interface and an implementation. Deliberately scale-agnostic: a function, a class, a package, or a slice spanning tiers. Do not say unit, component, or service."
+ },
+ {
+  "term": "Interface",
+  "group": "Code design",
+  "definition": "Everything a caller must know to use the module correctly. The type signature, and also invariants, ordering constraints, error modes, required configuration, and performance characteristics. Do not say API or signature, which cover only the type-level surface."
+ },
+ {
+  "term": "Implementation",
+  "group": "Code design",
+  "definition": "What sits inside a module. Distinct from adapter: a thing can be a small adapter with a large implementation, such as a Postgres repository, or a large adapter with a small implementation, such as an in-memory fake."
+ },
+ {
+  "term": "Depth",
+  "group": "Code design",
+  "definition": "Leverage at the interface. How much behaviour a caller or a test can exercise per unit of interface it has to learn. Deep means a large amount of behaviour behind a small interface. Shallow means an interface nearly as complicated as the implementation."
+ },
+ {
+  "term": "Seam",
+  "group": "Code design",
+  "definition": "A place where behaviour can be altered without editing in that place. The location at which a module's interface lives. Michael Feathers coined it. Do not say boundary, which collides with the bounded context of domain-driven design."
+ },
+ {
+  "term": "Adapter",
+  "group": "Code design",
+  "definition": "A concrete thing that satisfies an interface at a seam. Describes the role it fills, not what is inside it."
+ },
+ {
+  "term": "Leverage",
+  "group": "Code design",
+  "definition": "What callers gain from depth. More capability per unit of interface learned. One implementation repays across many call sites and many tests."
+ },
+ {
+  "term": "Locality",
+  "group": "Code design",
+  "definition": "What maintainers gain from depth. Change, bugs, knowledge, and verification concentrate in one place instead of spreading across callers. Fix once, fixed everywhere."
+ },
+ {
+  "term": "The deletion test",
+  "group": "Design tests",
+  "definition": "Imagine deleting the module. If complexity vanishes, it was a pass-through. If complexity reappears across many callers, it was earning its keep."
+ },
+ {
+  "term": "The interface is the test surface",
+  "group": "Design tests",
+  "definition": "Callers and tests cross the same seam. Wanting to test past the interface means the module is probably the wrong shape."
+ },
+ {
+  "term": "One adapter is a hypothetical seam, two adapters is a real one",
+  "group": "Design tests",
+  "definition": "Do not introduce a seam unless something actually varies across it."
+ },
+ {
+  "term": "Depth is a property of the interface, not the implementation",
+  "group": "Design tests",
+  "definition": "A deep module may be built internally from small swappable parts. Those parts are internal seams, private to the implementation and usable by its own tests."
+ },
+ {
+  "term": "Tracer bullet",
+  "group": "Delivery",
+  "definition": "A narrow but complete path through every layer, from schema to interface, that can be demonstrated on its own."
+ },
+ {
+  "term": "Vertical slice",
+  "group": "Delivery",
+  "definition": "The same idea applied to work breakdown. One slice cuts through all layers. The opposite, horizontal slicing, builds one layer at a time and cannot be verified until the end."
+ },
+ {
+  "term": "Blocking edge",
+  "group": "Delivery",
+  "definition": "A declared dependency from one ticket to another that must complete first. A ticket with no blockers can start immediately."
+ },
+ {
+  "term": "Wide refactor",
+  "group": "Delivery",
+  "definition": "One mechanical change whose blast radius covers the whole codebase, such as renaming a shared column. It cannot land as a vertical slice. Sequence it as expand, migrate in batches, then contract."
+ },
+ {
+  "term": "Expand and contract",
+  "group": "Delivery",
+  "definition": "Add the new form beside the old so nothing breaks, migrate call sites in batches sized by blast radius, then delete the old form once no caller remains."
+ },
+ {
+  "term": "Feedback loop",
+  "group": "Feedback and sessions",
+  "definition": "One command that goes red on the specific problem in front of you. Building it is most of the work of debugging."
+ },
+ {
+  "term": "Tight loop",
+  "group": "Feedback and sessions",
+  "definition": "Fast, sharp, and deterministic. A two-second deterministic loop is a different tool from a thirty-second flaky one."
+ },
+ {
+  "term": "Smart zone",
+  "group": "Feedback and sessions",
+  "definition": "The context window within which a model still reasons sharply, roughly 150,000 tokens on current models. Approaching it means compacting at a phase boundary rather than pushing on degraded."
+ },
+ {
+  "term": "Phase",
+  "group": "Feedback and sessions",
+  "definition": "A chunk of work inside a session, such as the grilling, the implementation, or the review. A phase ends when you think the work is done."
+ },
+ {
+  "term": "Phase boundary",
+  "group": "Feedback and sessions",
+  "definition": "The gap between two phases. The only place compaction belongs. Compacting mid-phase makes the agent lose the thread."
+ },
+ {
+  "term": "Context pointer",
+  "group": "Writing for agents",
+  "definition": "A reference held in context that names out-of-context material and encodes the condition for reaching it. A skill description is one. A line in `AGENTS.md` naming a document is the same object. The wording of the pointer, not its target, decides when the material gets reached."
+ },
+ {
+  "term": "Context load",
+  "group": "Writing for agents",
+  "definition": "The cost of always-loaded material on the agent's window. Spent every turn whether or not it fires."
+ },
+ {
+  "term": "Cognitive load",
+  "group": "Writing for agents",
+  "definition": "The cost on the human of knowing which documents exist and when to reach for each. Not a cost to minimise blindly. It is the price of human agency."
+ },
+ {
+  "term": "Progressive disclosure",
+  "group": "Writing for agents",
+  "definition": "Moving material out of the main file and behind a pointer, so it loads only when needed. Inline what every branch needs. Push out what only some branches reach."
+ }
+];
