@@ -60,7 +60,7 @@ function CopyButton({ text }: { text: string }) {
   );
 }
 
-/** The record exactly as it appears in the Markdown, ready to be lifted out. */
+/** The skill's own SKILL.md, exactly as vendored, ready to be lifted out. */
 function SourceBlock({ text }: { text: string }) {
   return (
     <div className="relative">

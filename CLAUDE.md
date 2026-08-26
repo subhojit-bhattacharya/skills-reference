@@ -69,9 +69,14 @@ and `books`. Counts must be derived from these arrays, never typed out. See
 `DeepShallow.tsx`, where the toggle labels read `DEEP_BOXES.length`, and
 `SkillBrowser.tsx`, where every filter chip counts its own bucket.
 
-Each skill also carries `source`, the record exactly as it appears in the
-Markdown. That is what the copy button on a card puts on the clipboard, so a
-reader lifts the authoritative text rather than the page's rendering of it.
+Each skill also carries `source`, the exact contents of that skill's own
+`SKILL.md` from the upstream `mattpocock/skills` repo, vendored under
+`scripts/skill-sources/<name>.md` rather than fetched at build time, so a
+build never depends on GitHub being reachable. That is what the copy button
+on a card puts on the clipboard and what the "SOURCE TEXT" block on an
+expanded card shows, so a reader lifts the authoritative upstream text rather
+than this page's paraphrase of it. If a skill is added or renamed, its vendored
+file must be added or renamed to match, or `npm run data` throws.
 
 Text out of `data.ts` goes through `inline()` in `src/markdown.tsx`, which
 renders the backtick, bold, and italic markup the reference uses. Printing such

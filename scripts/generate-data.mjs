@@ -18,6 +18,12 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE = join(root, "public", "Skills-For-Real-Engineers-Reference.md");
 const TARGET = join(root, "src", "data.ts");
 
+// Each skill's card shows its actual upstream SKILL.md, not this site's
+// paraphrase of it. Those files are vendored here (fetched from
+// github.com/mattpocock/skills) rather than fetched at build time, so a
+// build never depends on GitHub being reachable.
+const SKILL_SOURCES = join(root, "scripts", "skill-sources");
+
 const md = readFileSync(SOURCE, "utf8");
 const lines = md.split("\n");
 
@@ -135,6 +141,16 @@ for (let i = 0; i < lines.length; i++) {
       return out;
     });
 
+  // The exact contents of the skill's own SKILL.md, vendored under
+  // scripts/skill-sources/, so a reader can copy the authoritative upstream
+  // text rather than this page's paraphrase of it.
+  let source;
+  try {
+    source = readFileSync(join(SKILL_SOURCES, `${name}.md`), "utf8").trim();
+  } catch {
+    throw new Error(`no vendored SKILL.md for ${name} (expected scripts/skill-sources/${name}.md)`);
+  }
+
   skills.push({
     name,
     bucket: meta.bucket,
@@ -144,9 +160,7 @@ for (let i = 0; i < lines.length; i++) {
     purpose: take("Purpose"),
     fields: rest,
     plugin: meta.plugin,
-    // The record exactly as it appears in the Markdown, so a reader can copy
-    // the authoritative text rather than the page's rendering of it.
-    source: [`#### ${name}`, "", ...body].join("\n").replace(/\n{3,}/g, "\n\n").trim(),
+    source,
   });
 
   i = end;

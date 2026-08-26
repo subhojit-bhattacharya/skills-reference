@@ -8,7 +8,7 @@ export default function Header({ shown }: { shown: boolean }) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 transition-all duration-1000 md:px-10 md:py-8 ${
+      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between border-b border-white/8 bg-black/30 px-6 py-6 backdrop-blur-md transition-all duration-1000 md:px-10 md:py-8 ${
         shown ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
       }`}
     >
@@ -49,7 +49,7 @@ export default function Header({ shown }: { shown: boolean }) {
       </div>
 
       {open && (
-        <nav className="glass-panel absolute left-6 right-6 top-20 flex flex-col rounded-2xl p-3 xl:hidden">
+        <nav className="glass-panel absolute left-6 right-6 top-20 flex flex-col rounded-2xl bg-black/80 p-3 xl:hidden">
           {NAV.map((n) => (
             <a
               key={n.href}

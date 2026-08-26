@@ -2,8 +2,10 @@ import { BookOpen, ArrowDown } from "lucide-react";
 import { SOURCE_REPO } from "../config";
 
 export default function Hero({ shown, progress }: { shown: boolean; progress: number }) {
-  // The hero recedes as the reference takes over.
-  const fade = Math.max(0, 1 - progress * 1.6);
+  // The hero recedes as the reference takes over. Fully faded by ~1/4 of a
+  // viewport of scroll, well before the next section's content can reach the
+  // fixed CTA block near the bottom of the screen.
+  const fade = Math.max(0, 1 - progress * 4);
   const lift = progress * -60;
 
   return (
