@@ -48,20 +48,26 @@ export default function Header({ shown }: { shown: boolean }) {
         </button>
       </div>
 
-      {open && (
-        <nav className="glass-panel absolute left-6 right-6 top-20 flex flex-col rounded-2xl bg-black/80 p-3 xl:hidden">
-          {NAV.map((n) => (
-            <a
-              key={n.href}
-              href={n.href}
-              onClick={() => setOpen(false)}
-              className="rounded-xl px-4 py-3 text-[11px] font-medium tracking-[0.12em] text-white/90 no-underline hover:bg-white/5"
-            >
-              {n.label}
-            </a>
-          ))}
-        </nav>
-      )}
+      <nav
+        aria-hidden={!open}
+        className={`glass-panel absolute left-6 right-6 top-20 flex origin-top flex-col rounded-2xl bg-black/80 p-3 transition-all duration-300 ease-out xl:hidden ${
+          open
+            ? "translate-y-0 scale-100 opacity-100"
+            : "pointer-events-none -translate-y-2 scale-95 opacity-0"
+        }`}
+      >
+        {NAV.map((n) => (
+          <a
+            key={n.href}
+            href={n.href}
+            tabIndex={open ? undefined : -1}
+            onClick={() => setOpen(false)}
+            className="rounded-xl px-4 py-3 text-[11px] font-medium tracking-[0.12em] text-white/90 no-underline hover:bg-white/5"
+          >
+            {n.label}
+          </a>
+        ))}
+      </nav>
     </header>
   );
 }
